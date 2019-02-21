@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vue-none-yet
 
 ## Project setup
@@ -27,3 +28,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# vue-none-yet
+>>>>>>> 9423240ce5fde1b16db5d7c789c7e4bb707334d4
