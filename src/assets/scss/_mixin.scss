@@ -1,0 +1,13 @@
+@mixin remove-margin-padding {
+  margin: 0;
+  padding: 0;
+}
+@mixin low-priority {
+  z-index: 100;
+}
+@mixin medium-priority {
+  z-index: 200;
+}
+@mixin high-priority {
+  z-index: 300;
+}

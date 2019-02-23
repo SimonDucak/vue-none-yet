@@ -1,0 +1,352 @@
+@import "functions";
+@import "variables";
+@import "mixin";
+//
+// Settings
+//
+// Grid settings
+$count-column: 8;
+// Padding settings
+$count-padding: 6;
+$padding-size: 1;
+$padding-unit: rem;
+$allow-padding: false;
+$allow-padding-left: false;
+$allow-padding-right: false;
+$allow-padding-bottom: false;
+$allow-padding-top: false;
+$allow-padding-between-x: true;
+$allow-padding-between-y: false;
+// Padding children settings
+$allow-padding-children: false;
+$allow-padding-left-children: false;
+$allow-padding-right-children: false;
+$allow-padding-bottom-children: false;
+$allow-padding-top-children: false;
+$allow-padding-between-children-x: false;
+$allow-padding-between-children-y: false;
+// Margin settings
+$count-margin: 6;
+$margin-size: 1;
+$margin-unit: rem;
+$allow-margin: false;
+$allow-margin-left: false;
+$allow-margin-right: false;
+$allow-margin-bottom: true;
+$allow-margin-top: false;
+$allow-margin-between-x: false;
+$allow-margin-between-y: false;
+// Margin children settings
+$allow-margin-children: false;
+$allow-margin-left-children: false;
+$allow-margin-right-children: true;
+$allow-margin-bottom-children: true;
+$allow-margin-top-children: false;
+$allow-margin-between-children-x: false;
+$allow-margin-between-children-y: false;
+//
+// Grid SCSS system
+//
+@for $i from 2 through $count-column {
+  .count-children-#{$i} {
+    > * {
+      width: #{100% / $i};
+    }
+  }
+}
+@for $i from 1 through $count-column {
+  .col-#{$i} {
+    width: #{100% / $count-column * $i};
+  }
+}
+//
+// Flex SCSS system
+//
+.flex {
+  display: flex;
+}
+$flex-values-list: (
+        start: "flex-start",
+        center: "center",
+        end: "flex-end",
+        between: "space-between"
+);
+@each $key, $val in $flex-values-list {
+  .justify-#{$key} {
+    justify-content: #{$val};
+  }
+}
+@each $key, $val in $flex-values-list {
+  .align-items-#{$key} {
+    align-items: #{$val};
+  }
+}
+.f-column {
+  flex-direction: column;
+}
+.f-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+//
+// Basic SCSS
+//
+// Padding
+@if ($allow-padding) {
+  @for $i from 1 through $count-padding {
+    .p-#{$i} {
+      padding: #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-right) {
+  @for $i from 1 through $count-padding {
+    .p-right-#{$i} {
+      padding-right: #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-left) {
+  @for $i from 1 through $count-padding {
+    .p-left-#{$i} {
+      padding-left: #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-bottom) {
+  @for $i from 1 through $count-padding {
+    .p-bottom-#{$i} {
+      padding-bottom: #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-top) {
+  @for $i from 1 through $count-padding {
+    .p-top-#{$i} {
+      padding-top: #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-between-x) {
+  @for $i from 1 through $count-padding {
+    .p-between-x-#{$i} {
+      padding: 0 #{$i * $padding-size}$padding-unit;
+    }
+  }
+}
+@if ($allow-padding-between-y) {
+  @for $i from 1 through $count-padding {
+    .p-between-y-#{$i} {
+      padding: #{$i * $padding-size}$padding-unit 0;
+    }
+  }
+}
+// Padding children
+@if ($allow-padding-children) {
+  @for $i from 1 through $count-padding {
+    .p-children-#{$i} {
+      > * {
+        padding: #{$i * $padding-size}$padding-unit;
+        &:last-child {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-padding-right-children) {
+  @for $i from 1 through $count-padding {
+    .p-right-children-#{$i} {
+      > * {
+        padding-right: #{$i * $padding-size}$padding-unit;
+      }
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+}
+@if ($allow-padding-left-children) {
+  @for $i from 1 through $count-padding {
+    .p-left-children-#{$i} {
+      > * {
+        padding-left: #{$i * $padding-size}$padding-unit;
+        &:last-child {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-padding-bottom-children) {
+  @for $i from 1 through $count-padding {
+    .p-bottom-children-#{$i} {
+      > * {
+        padding-bottom: #{$i * $padding-size}$padding-unit;
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-padding-top-children) {
+  @for $i from 1 through $count-padding {
+    .p-top-children-#{$i} {
+      > * {
+        padding-top: #{$i * $padding-size}$padding-unit;
+        &:last-of-type {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-padding-between-children-x) {
+  @for $i from 1 through $count-padding {
+    .p-between-x-#{$i} {
+      > {
+        padding: 0 #{$i * $padding-size}$padding-unit;
+      }
+    }
+  }
+}
+@if ($allow-padding-between-children-y) {
+  @for $i from 1 through $count-padding {
+    .p-between-y-#{$i} {
+      > * {
+        padding: #{$i * $padding-size}$padding-unit 0;
+      }
+    }
+  }
+}
+// Margin
+@if ($allow-margin) {
+  @for $i from 1 through $count-margin {
+    .m-#{$i} {
+      margin: #{$i * $padding-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-right) {
+  @for $i from 1 through $count-margin {
+    .m-right-#{$i} {
+      margin-right: #{$i * $margin-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-bottom) {
+  @for $i from 1 through $count-margin {
+    .m-bottom-#{$i} {
+      margin-bottom: #{$i * $margin-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-left) {
+  @for $i from 1 through $count-margin {
+    .m-left-#{$i} {
+      margin-left: #{$i * $margin-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-top) {
+  @for $i from 1 through $count-margin {
+    .m-top-#{$i} {
+      margin-top: #{$i * $margin-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-between-x) {
+  @for $i from 1 through $count-margin {
+    .m-between-x-#{$i} {
+      margin: 0 #{$i * $margin-size}$margin-unit;
+    }
+  }
+}
+@if ($allow-margin-between-y) {
+  @for $i from 1 through $count-margin {
+    .m-between-y-#{$i} {
+      margin: #{$i * $margin-size}$margin-unit 0;
+    }
+  }
+}
+// Margin children
+@if ($allow-margin-children) {
+  @for $i from 1 through $count-margin {
+    .m-children-#{$i} {
+      > * {
+        margin: #{$i * $padding-size}$margin-unit;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-margin-right-children) {
+  @for $i from 1 through $count-margin {
+    .m-right-children-#{$i} {
+      > * {
+        margin-right: #{$i * $margin-size}$margin-unit;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-margin-bottom-children) {
+  @for $i from 1 through $count-margin {
+    .m-bottom-children-#{$i} {
+      > * {
+        margin-bottom: #{$i * $margin-size}$margin-unit;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-margin-left-children) {
+  @for $i from 1 through $count-margin {
+    .m-left-children-#{$i} {
+      > * {
+        margin-left: #{$i * $margin-size}$margin-unit;
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-margin-top-children) {
+  @for $i from 1 through $count-margin {
+    .m-top-children-#{$i} {
+      > * {
+        margin-top: #{$i * $margin-size}$margin-unit;
+        &:last-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+@if ($allow-margin-between-children-x) {
+  @for $i from 1 through $count-margin {
+    .m-between-x-#{$i} {
+      > * {
+        margin: 0 #{$i * $margin-size}$margin-unit;
+      }
+    }
+  }
+}
+@if ($allow-margin-between-children-y) {
+  @for $i from 1 through $count-margin {
+    .m-between-y-#{$i} {
+      > * {
+        margin: #{$i * $margin-size}$margin-unit 0;
+      }
+    }
+  }
+}
