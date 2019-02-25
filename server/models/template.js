@@ -28,4 +28,4 @@ templateSchema.pre("remove", async function(next) {
 });
 
 const Template = mongoose.model("Template", templateSchema);
-module.exports = templateSchema;
+module.exports = Template;

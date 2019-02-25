@@ -8,6 +8,12 @@ const projectSchema = new mongoose.Schema(
       unique: true,
       max: 25
     },
+    urlPath: {
+      type: String,
+      required: true,
+      unique: true,
+      max: 25
+    },
     description: {
       type: String,
       required: true,
@@ -18,7 +24,7 @@ const projectSchema = new mongoose.Schema(
       type: Array,
       required: true
     },
-    template: [
+    templates: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Template"
@@ -26,6 +32,15 @@ const projectSchema = new mongoose.Schema(
     ]
   }
 );
+
+// projectSchema.pre("remove", async function(next) {
+//   try {
+//     let foundProject = await db.Project(this.id);
+//     console.log(foundProject);
+//   } catch(err) {
+//     return next(err);
+//   }
+// });
 
 const Project = mongoose.model("Project", projectSchema);
 module.exports = Project;

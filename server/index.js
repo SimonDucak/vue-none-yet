@@ -4,10 +4,10 @@ const bodyParser = require("body-parser");
 const errorHandler = require("./handlers/error");
 const PORT = 8081;
 
+app.use(bodyParser.json());
+
 const ProjectRoutesAPI = require("./routes/project");
 app.use("/", ProjectRoutesAPI);
-
-app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     let err = new Error("Not Found");
