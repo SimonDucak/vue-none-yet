@@ -33,14 +33,5 @@ const projectSchema = new mongoose.Schema(
   }
 );
 
-// projectSchema.pre("remove", async function(next) {
-//   try {
-//     let foundProject = await db.Project(this.id);
-//     console.log(foundProject);
-//   } catch(err) {
-//     return next(err);
-//   }
-// });
-
 const Project = mongoose.model("Project", projectSchema);
 module.exports = Project;

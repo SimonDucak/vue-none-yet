@@ -19,10 +19,13 @@ const templateSchema = new mongoose.Schema(
 templateSchema.pre("remove", async function(next) {
   try {
     let project = await Project.findById(this.project.id);
-    project.template.remove(this.id);
+
+    project.templates.remove(this.id);
+
     await project.save();
+
     return next();
-  } catch(err) {
+  } catch (err) {
     return next(err);
   }
 });

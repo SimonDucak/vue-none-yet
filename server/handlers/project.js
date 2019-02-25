@@ -11,6 +11,16 @@ exports.getProjectAPI = async function(req,res,next) {
   }
 };
 
+exports.getTemplateAPI = async function(req,res,next) {
+  try {
+    let templates = await db.Template.find();
+
+    return res.status(200).json(templates);
+  } catch (err) {
+    return next(err);
+  }
+};
+
 exports.createProject = async function(req,res,next) {
   try {
     let newProject = await db.Project.create({
@@ -83,6 +93,17 @@ exports.updateTemplate = async function(req,res,next) {
     let foundTemplate = await db.Template.findByIdAndUpdate(req.params.id, {
       type: req.body.type
     });
+
+    return res.status(200).json(foundTemplate);
+  } catch(err) {
+    return next(err);
+  }
+};
+
+exports.removeTemplate = async function(req,res,next) {
+  try {
+    let foundTemplate = await db.Template.findById(req.params.id);
+    await foundTemplate.remove();
 
     return res.status(200).json(foundTemplate);
   } catch(err) {
