@@ -15,7 +15,8 @@ import TheNavigation from "@/components/TheNavigation.vue";
 
 export default {
   components: {
-    TheWebLines,TheNavigation
+    TheWebLines,
+    TheNavigation
   }
 };
 </script>
