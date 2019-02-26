@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <the-web-lines />
     <the-navigation />
     <!-- Content -->
     <main class="content block">
@@ -10,12 +9,10 @@
 </template>
 
 <script>
-import TheWebLines from "@/components/TheWebLines.vue";
 import TheNavigation from "@/components/TheNavigation.vue";
 
 export default {
   components: {
-    TheWebLines,
     TheNavigation
   }
 };
