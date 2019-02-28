@@ -23,6 +23,7 @@ exports.getTemplateAPI = async function(req,res,next) {
 
 exports.createProject = async function(req,res,next) {
   try {
+    console.log(req.body, "REQ BODY DATA");
     let newProject = await db.Project.create({
       name: req.body.name,
       urlPath: encodeURI(req.body.name.split(" ").join("-")),

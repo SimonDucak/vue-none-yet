@@ -19,8 +19,8 @@ class ProjectService {
     return new Promise(async (resolve, reject) => {
       try {
         const req = await axios.post(url,data);
-        const data = req.data;
-        resolve(data);
+        const res = req.data;
+        resolve(res);
       } catch (err) {
         reject(err);
       }

@@ -6,6 +6,7 @@ const errorHandler = require("./handlers/error");
 const PORT = 8081;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 
 const ProjectRoutesAPI = require("./routes/project");
