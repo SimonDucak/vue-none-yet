@@ -1,11 +1,24 @@
 const db = require("../models/");
 
-exports.getProjectAPI = async function(req,res,next) {
+exports.getProjectsAPI = async function(req,res,next) {
   try {
     let projects = await db.Project.find().populate("templates", {
       type: true
     });
     return res.status(200).json(projects);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+exports.getProjectAPI = async function(req,res,next) {
+  try {
+    let project = await db.Project.findOne({
+      urlPath: req.params.name
+    }).populate("templates", {
+      type: true
+    });
+    return res.status(200).json(project);
   } catch (err) {
     return next(err);
   }

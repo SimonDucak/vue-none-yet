@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router({ mergeParams: true });
 
 const {
+  getProjectsAPI,
   getProjectAPI,
   getTemplateAPI,
   createProject,
@@ -14,10 +15,11 @@ const {
 
 // Project
 router.route("/")
-  .get(getProjectAPI)
+  .get(getProjectsAPI)
   .post(createProject);
 
 router.route("/:name")
+  .get(getProjectAPI)
   .put(updateProject)
   .delete(removeProject);
 

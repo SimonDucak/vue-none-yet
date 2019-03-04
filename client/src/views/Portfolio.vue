@@ -8,6 +8,7 @@
         v-for="project in projects"
         :key="project._id"
         :name="project.name"
+        :urlPath="project.urlPath"
       />
     </ul>
   </div>

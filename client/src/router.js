@@ -20,6 +20,11 @@ export default new Router({
     {
       path: "/portfolio",
       component: () => import("./views/Portfolio.vue")
+    },
+    {
+      path: "/project/:urlPath",
+      component: () => import("./views/Project.vue"),
+      props: true
     }
   ]
 });

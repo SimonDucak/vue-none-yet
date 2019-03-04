@@ -18,7 +18,7 @@
             <ul>
                 <li
                         v-for="(tag ,index) in newProject.tags"
-                        v-bind:key="index"
+                        v-bind:key="index + 1"
                 >
                     {{tag}}
                 </li>
